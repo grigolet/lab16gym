@@ -1,7 +1,6 @@
 import numpy as np
 import peakutils
 
-
 def get_peak_ratio(file_name):
     wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
 
@@ -57,7 +56,6 @@ def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file, acq_time):
 	#creo corrispondenza tra i lambda del file (x_rho, rho) e I_argon e I_correct attraverso interpolazione
 	I_argon_correct=np.interp(x_rho, x_I, I_argon)
 	I_correct=I_correct_abs(I_argon_correct, I_lamp, rho, x_rho, x_lamp)
-	ciao = 4*4
 
 
 	#troviamo la temperatura
