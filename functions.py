@@ -1,5 +1,7 @@
 import numpy as np
 import peakutils
+import json
+from scipy import interpolate
 
 def get_peak_ratio(file_name):
     wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
@@ -110,3 +112,21 @@ def get_profile_ratio(config_file, data_path):
 		w_em =np.append(w_em, e)
 
     return ratio_mean, w_em, results
+
+
+def get_density(ratio, fants_file='fants.txt'):
+    """
+    Take an array of line ratios (I480/I488) and interpolate the fants.txt file
+    in order to get the corresponding density
+    """
+    # read data
+    n, r_1, r_2, r_3, r_4, r_5, r_6, r_7 = np.genfromtxt(fants_file, unpack=True)
+    # am I interested in just the min and the max value?
+    f_interp_1 = interpolate.interp1d(r_1, n)
+    f_interp_7 = interpolate.interp1d(r_7, n)
+    np.vectorize(f_interp_1)
+    np.vectorize(f_interp_7)
+    n_min = f_interp_1(ratio)
+    n_max = f_interp_7(ratio)
+    n_avg = np.mean([n_min, n_max], axis=0)
+    return n_avg, n_min, n_max
