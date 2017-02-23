@@ -40,7 +40,7 @@ def I_correct_abs(I, I_lamp, rho, x, x_lamp):
 	return I_abs*(x/(h_c))*((4*np.pi)/L)
 
 
-def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file):
+def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file, acq_time):
 	#leggo il file riferito alla I_lamp e normalizzo I_lamp rispetto al tempo (3sec di acquisizione)
 	x_lamp, I_lamp=np.genfromtxt(I_lamp_file, unpack=True)
 	I_lamp=I_lamp/3
@@ -50,13 +50,12 @@ def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file):
 
 	#leggo il file riferito alla I_argon e la normalizzo a un secondo (file di dati presi ogni 0.01s)
 	x_I, I_argon=np.genfromtxt(I_argon_file, unpack=True)
-	I_argon=I_argon*100
+	I_argon=I_argon/acq_time
 
 
 	#creo corrispondenza tra i lambda del file (x_rho, rho) e I_argon e I_correct attraverso interpolazione
 	I_argon_correct=np.interp(x_rho, x_I, I_argon)
 	I_correct=I_correct_abs(I_argon_correct, I_lamp, rho, x_rho, x_lamp)
-	ciao = 4*4
 
 
 	#troviamo la temperatura

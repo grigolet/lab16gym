@@ -1,2 +1,7 @@
-langmuir/data/*
+langmuir/data/
 __pycache__
+.ipynb_checkpoints/
+data/
+OES_Studenti_2017/
+dati fantz/
+
