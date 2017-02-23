@@ -14,6 +14,12 @@ def get_peak_ratio(file_name):
     return ratio
 
 
+def get_ratio_density(n_e, Te_3, Te_3_5, Te_4, Te_4_5, Te_5, Te_6, Te_8):
+	n_e, Te_3, Te_3_5, Te_4, Te_4_5, Te_5, Te_6, Te_8=np.genfromtxt(ratio_density_file, skip_header=1, unpack=True)
+	
+	ne_search=
+
+		
 # definisco la funzione irradianza
 def irradiance(x):
 	A = 43.1162499557604
