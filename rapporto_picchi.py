@@ -2,6 +2,8 @@ import numpy as np
 #from scipy import signal
 import peakutils
 
+#aggiungo le rigghe per provare le cose
+
 deme_directory = "/home/demetrio/Dropbox/Laboratorio_Plasmi/lab16gym/OES_Studenti_2017/"
 file = "Ar15022017_a1_acq_time_0.5s.txt"
 
