@@ -72,3 +72,41 @@ def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file, acq_time):
 	I_abs_750 = I_correct[abs(x_rho - 750).argmin()]*10e-4
 
 	return [np.array([x_rho, I_correct]), n_0, X750, I_abs_750]
+
+
+def get_profile_ratio(config_file, data_path):
+	"""This file reads the config file, stored as a .json and the
+    data path where the data is stored and returns the following:
+    an array of average intensity line ratios,
+    the power and 
+    a dict with the results grouped by power"""
+	# open the config file
+	with open(config_file) as config_file_data:
+	    config_file = json.load(config_file_data)
+
+    ratios = {}
+    ratio_mean = np.array([])
+    w_em = np.array([])
+
+	# iterate over the items in teh config file to 
+	# get the powers and file names
+    for key, value in config_file.items():
+        peak_ratio = get_peak_ratio(file_path + key + '.dat')
+        if value['w'] not in results.keys():
+        	results[value['w']] = []
+    	if value['w'] not in ratios.keys():
+			ratios[value['w']] = []
+
+    	results[value['w']].append({
+    		'id': key,
+    		'ratio': peak_ratio,
+    		'p': value['p']
+    	})
+
+    	ratios[value['w']].append(peak_ratio)
+
+	for w, values_ratio in ratios.items():
+		ratio_mean = np.append(ratio_mean, np.mean(values_ratio))
+		w_em =np.append(w_em, e)
+
+    return ratio_mean, w_em, results
