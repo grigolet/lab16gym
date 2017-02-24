@@ -97,8 +97,7 @@ def elaborate_dataset(fit_param, print_fig, input_dir, output_dir, capacity_1,
             "W_em": fit_param['W_em'],
             "P": fit_param['P'],
             "I_B": fit_param['I_B'],
-            "x": fit_param['x'] - 10  #the short probe is
-            #10 cm before the long probe that is the reference
+            "x": fit_param['x']
         }
         fit_output.update(data_fitted['data'])
         fit_results.append(fit_output)
