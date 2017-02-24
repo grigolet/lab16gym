@@ -217,7 +217,6 @@ if __name__ == "__main__":
         for p in fit_param_generic:
             if not p in fit_param:
                 fit_param[p] = fit_param_generic[p]
-        '''
         p = multiprocessing.Process(
             target=elaborate_dataset,
             args=(fit_param, print_fig, input_dir, output_dir, capacity_1,
@@ -226,3 +225,4 @@ if __name__ == "__main__":
         '''
         elaborate_dataset(fit_param, print_fig, input_dir, output_dir, capacity_1,
                   capacity_2, offset_1, offset_2, R_1, R_2, probes,columns)
+        '''
