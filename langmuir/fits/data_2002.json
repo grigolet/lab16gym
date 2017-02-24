@@ -1,6 +1,6 @@
 {
-    "input_dir" : "./data/data_raw-2002",
-    "output_dir": "./data/data-2002",
+    "input_dir" : "../data/data_raw-2002",
+    "output_dir": "../data/data-2002",
     "capacity_1":1.1682465754678737e-09,
     "capacity_2":1.3560523228454391e-09,
     "offset_1": 0.010159781877431426,
