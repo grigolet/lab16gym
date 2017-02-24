@@ -20,7 +20,7 @@ def aggregate_data(path):
     for item in items:
         data += json.load(open(path + "/" + item + "/fit_results.json", 'r'))
     # creating dataframe
-    df = DataFrame(data, columns=['id', 'probe', 'x', 'I_B', 'P', 'W_em',
+    df = DataFrame(data, columns=['id', 'probe', 'x', 'I_B', 'P', 'W_em', 'P_off',
                         'T_e', 'err_T_e', 'n_e', 'err_n_e', 'f_ep', 'err_f_ep',
                         'v_plasma', 'err_v_plasma', 'alpha', 'err_alpha',
                         'v_floating', 'err_v_floating',

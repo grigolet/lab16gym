@@ -97,7 +97,8 @@ def elaborate_dataset(fit_param, print_fig, input_dir, output_dir, capacity_1,
             "W_em": fit_param['W_em'],
             "P": fit_param['P'],
             "I_B": fit_param['I_B'],
-            "x": fit_param['x']
+            "x": fit_param['x'],
+            "P_off": fit_param['P_off']
         }
         fit_output.update(data_fitted['data'])
         fit_results.append(fit_output)
