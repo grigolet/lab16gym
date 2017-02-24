@@ -4,7 +4,7 @@ import time
 import math
 from scipy.odr import Model, RealData, ODR
 
-A = 12 * 10**-6
+A = 15 * 10**-6
 m_i = (938 + 939) * 10**6
 c = 3 * 10**8
 e = - 1.60217653 * 10**-19
