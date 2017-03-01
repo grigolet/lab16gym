@@ -81,7 +81,7 @@ def elaborate_dataset(fit_param, print_fig, input_dir, output_dir, capacity_1,
         #fitting all data
         N_iterations = fit_param['n_fit_iter']
         data_fitted = fitting.fit_data(plt_data, initial_data[:3],
-                                       N_iterations)
+                                       N_iterations, fit_param['m_i'])
         #printing results
         print('Fit exec time: {}'.format(round(data_fitted['exec_time'], 5)))
         output_file.write('\n\nFitted data:'+\

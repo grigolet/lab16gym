@@ -5,7 +5,7 @@ import math
 from scipy.odr import Model, RealData, ODR
 
 A = 15 * 10**-6
-m_i = (938 + 939) * 10**6
+# m_i = (938 + 939) * 10**6
 c = 3 * 10**8
 e = - 1.60217653 * 10**-19
 
@@ -74,7 +74,7 @@ def fit_initial_param(bins_data, plt_data):
 
     return (v_floating, i_ionic_sat, alpha, fig1, output_str)
 
-def fit_data(plt_data, initial_data, n_iterations):
+def fit_data(plt_data, initial_data, n_iterations, m_i):
     t1 = time.time()
     #unpacking variables
     x, y, xerr, yerr = plt_data
@@ -188,7 +188,7 @@ def fit_data(plt_data, initial_data, n_iterations):
     #calculate addictional data
     ne_data = calculate_ne(
         best_fit_results[0],best_fit_errors[0],
-        best_fit_results[3], best_fit_errors[3])
+        best_fit_results[3], best_fit_errors[3], m_i)
     vplasma_data = calculate_vplasma(
         best_fit_results[2], best_fit_errors[2],
         best_fit_results[3], best_fit_errors[3])
@@ -262,7 +262,7 @@ def split_data(n, plt_data, v_float):
             ))
     return result
 
-def calculate_ne(I, sigma_I, T_e, sigma_Te):
+def calculate_ne(I, sigma_I, T_e, sigma_Te, m_i):
         '''This function return (n_e, sigma_ne)'''
         n_e = (2 * I) / (e * A * c) *  math.sqrt(m_i / (T_e))
         sigma_ne = (I/(e*c*A))*math.sqrt(((m_i*sigma_I**2)/(I**2 * T_e)) +\
