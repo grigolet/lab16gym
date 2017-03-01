@@ -114,6 +114,9 @@ def fit_data(plt_data, initial_data, n_iterations, m_i):
     #using the principle of min temperature
     #unpacking results for temperature
     temp_fit = [b[3] for b in fit_results]
+    # discard the first temp value because it has been arbitrarly
+    # set
+    temp_fit = temp_fit[1:]
     #find the minimum of the temperature to get all associated
     #parameters and use them as the best parameters for fitting
     min_temp = min(temp_fit)
