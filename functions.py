@@ -1,26 +1,33 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 import peakutils
 import json
 from scipy import interpolate
 
+
 def get_peak_ratio(file_name):
     wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
 
     peakind = peakutils.indexes(intensity, thres=0.1, min_dist=0.5)
+    
+    x_fit=np.zeros(21)
+    y_fit=np.zeros(21)
 
-    I480 = intensity[peakind[np.abs(wavelenght[peakind] - 480).argmin()]]
-    I488 = intensity[peakind[np.abs(wavelenght[peakind] - 488).argmin()]]
+    for i in range(0,21):
+        x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - 480).argmin()] + i - 10]
+        y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - 480).argmin()] + i - 10]
+    I480, x480, s480 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
+            
+    for i in range(0,21):
+        x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - 488).argmin()] + i - 10]
+        y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - 488).argmin()] + i - 10]
+    I488, x488, s488 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
 
     ratio = I480 / I488
+    ratio_err = ratio*(s480/I480 + s488/I488)
 
     return ratio
 
-'''
-def get_ratio_density(n_e, Te_3, Te_3_5, Te_4, Te_4_5, Te_5, Te_6, Te_8):
-    n_e, Te_3, Te_3_5, Te_4, Te_4_5, Te_5, Te_6, Te_8=np.genfromtxt(ratio_density_file, skip_header=1, unpack=True)
-    
-    ne_search=
-'''
         
 # definisco la funzione irradianza
 def irradiance(x):
@@ -34,9 +41,11 @@ def irradiance(x):
     H = 0
     return np.power(x,-5)*np.exp(A+B/x)*(C+D/x+E/np.power(x,2)+F/np.power(x,3)+G/np.power(x,4)+H/np.power(x,5))
 
+
 #definisco L_lambda=radianza di diffusione
 def diffuser_radiance(x, rho):
     return np.sqrt(2)/np.pi*irradiance(x)*rho   
+
 
 #definisco Intensity assoluta corretta (viene 1/J)
 def I_correct_abs(I, I_lamp, rho, x, x_lamp):
@@ -60,11 +69,9 @@ def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file, acq_time):
     x_I, I_argon=np.genfromtxt(I_argon_file, unpack=True)
     I_argon=I_argon/acq_time
 
-
     #creo corrispondenza tra i lambda del file (x_rho, rho) e I_argon e I_correct attraverso interpolazione
     I_argon_correct=np.interp(x_rho, x_I, I_argon)
     I_correct=I_correct_abs(I_argon_correct, I_lamp, rho, x_rho, x_lamp)
-
 
     #troviamo la temperatura
     n_e = 2e11              #cm-3
@@ -115,20 +122,57 @@ def get_profile_ratio(config_file, data_path):
     return ratio_mean, w_em, results
 
 
-
-def get_density(ratio, fants_file='fants.txt'):
+def get_density(peak_ratio, fants_file='fants.txt'):
     """
     Take an array of line ratios (I480/I488) and interpolate the fants.txt file
     in order to get the corresponding density
     """
-    # read data
-    n, r_1, r_2, r_3, r_4, r_5, r_6, r_7 = np.genfromtxt(fants_file, unpack=True)
-    # am I interested in just the min and the max value?
-    f_interp_1 = interpolate.interp1d(r_1, n)
-    f_interp_7 = interpolate.interp1d(r_7, n)
-    np.vectorize(f_interp_1)
-    np.vectorize(f_interp_7)
-    n_min = f_interp_1(ratio)
-    n_max = f_interp_7(ratio)
-    n_avg = np.mean([n_min, n_max], axis=0)
-    return n_avg, n_min, n_max
+    
+    if (not isinstance (peak_ratio, np.ndarray)):
+        # read data
+        n, r_1, r_2, r_3, r_4, r_5, r_6, r_7 = np.genfromtxt(fants_file, unpack=True)
+        #ratio = np.array([r_1, r_2, r_3, r_4, r_5, r_6, r_7])
+        lista = [r_1, r_2, r_3, r_4, r_5, r_6, r_7]
+        n_e = np.empty([7])
+        i=0
+        for r_i in lista:
+            f_interp = interpolate.interp1d(r_i, n)
+            np.vectorize(f_interp)
+            n_e[i] = f_interp(peak_ratio)
+            i = i + 1
+        n_e_mean = np.mean(n_e)
+        n_e_min = min(n_e)
+        n_e_max = max(n_e)
+        return n_e_mean, n_e_min, n_e_max
+
+    """
+    Per capire le modifiche nel ciclo sotto secondo me è meglio guardare il ciclo sopra, che è quello "vecchio" con la sola aggiunta
+    della dondizione. Se il peak_ratio che prende in ingresso la funzione è un vettore (cosa che avviene in in peak_analysis.ipynb 
+    nella cella immediatamente successiva a quella che stampa i risultati, quando operiamo su tutti i file specificati nel json) quando 
+    chiamo f_interp(peak_ratio) nel ciclo for il risultato non è un numero, ma un array di numeri, uno per ogni file analizzato; 
+    cerco quindi di mettere in n_e[i] un vettore, da cui l'errore "setting array element with a sequence". Per risolvere il problema
+    se il peak_ratio in ingresso è un vettore faccio eseguire il ciclo sopra per ogni elemento di peak_ratio; 
+    il ciclo sopra ritorna tre numeri, quello sotto tre array di numeri;
+    """               
+                                                
+    if (isinstance (peak_ratio, np.ndarray)):
+        n, r_1, r_2, r_3, r_4, r_5, r_6, r_7 = np.genfromtxt(fants_file, unpack=True)
+        lista = [r_1, r_2, r_3, r_4, r_5, r_6, r_7]
+        n_e = np.empty([7])
+        l = len(peak_ratio)
+        n_e_mean_array = np.empty([l])
+        n_e_min_array = np.empty([l])
+        n_e_max_array = np.empty([l])
+        
+        for j in range (0,l):
+            i=0
+            for r_i in lista:
+                f_interp = interpolate.interp1d(r_i, n)
+                np.vectorize(f_interp)
+                n_e[i] = f_interp(peak_ratio[j])
+                i = i + 1
+            n_e_mean_array[j] = np.mean(n_e)
+            n_e_min_array[j] = min(n_e)
+            n_e_max_array[j] = max(n_e)   
+        
+        return n_e_mean_array, n_e_min_array, n_e_max_array
