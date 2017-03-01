@@ -1,0 +1,116 @@
+
+\documentclass[a4paper,11pt]{book}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{verbatim}
+%\usepackage{pslatex}
+%\usepackage{pstricks}
+%cross reference footnote
+\usepackage{cleveref}[2012/02/15]
+%\crefformat{footnote}{#2\footnotemark[#1]#3}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black]{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[Glenn]{fncychap}
+\captionsetup[table]{position=top}
+\usepackage{booktabs}
+\usepackage{colortbl,array}
+\usepackage[version=3]{mhchem}
+\usepackage{listings} %per includere il codice
+\usepackage{titling}
+\usepackage{geometry}
+\usepackage{emptypage}
+\geometry{a4paper, top=3cm, bottom=4cm, left=3cm, right=3cm, heightrounded, bindingoffset=5mm}
+
+\lstdefinestyle{custompy}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{BlueGreen},
+  identifierstyle=\color{blue},
+  stringstyle=\color{BrickRed},
+}
+\lstset{
+  numbers=left,
+  stepnumber=1,    
+  firstnumber=1,
+  numberfirstline=true
+}
+\usepackage{indentfirst}
+\lstset{language=Python,style=custompy}
+\newcommand{\comando}[1]{\texttt{#1}}
+\renewcommand\captionfont{\footnotesize} 
+\renewcommand\captionlabelfont{\bfseries}
+\usepackage{parskip}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{1em}
+\usepackage{soul}
+\usepackage[opacity=.8, open=true]{pdfcomment}
+\setulcolor{green}
+\newcommand{\itememph}[1]{\textbf{#1}}
+%non andare a capo su figura, sezione, appendice
+\usepackage{hyphenat}
+\hyphenation{figura sezione appendice}
+%footnote tra parentesi
+\makeatletter
+\def\@makefnmark{\hbox{\@textsuperscript{\normalfont(\@thefnmark)}}}
+\makeatother
+\usepackage{setspace}
+\onehalfspacing
+
+
+\usepackage{newlfont}
+\vspace{\stretch{2}}
+\begin{document}
+
+\frontmatter
+
+
+\begin{center}
+{\large \center \bf{Università degli Studi di Milano-Bicocca}}
+ \center{\includegraphics[width=4cm]{logo} }
+{\large \center\textsc{Facoltà di Scienze Matematiche, Fisiche e Naturali}
+{ \Large \center {Corso di Laurea Magistrale in Fisica}}}
+\vspace{2cm}
+\centering
+\hrule
+\center {\bf {\textsc{Relazioni degli esperimenti svolti presso il CNR}}}
+\vspace{\baselineskip}
+\hrule
+\vfill
+
+\centering{
+\normalsize{
+\emph{Relazioni di:}\\
+Magatti Demetrio, Muscente Paola e Rigoletti Gianluca\\\vspace{.1cm}}}
+
+\vfill
+
+\vspace{\baselineskip}
+
+	{Anno Accademico 2016/2017}
+\end{center} 
+
+\mainmatter
+\include{Esperimento_23022017}
+\include{Esperimento_27022017}
+
+\backmatter
+
+\end{document}

@@ -1,0 +1,242 @@
+\chapter{Calcolo della densità e della temperatura elettronica per un plasma di Argon attraverso due differenti tecniche: sonda di Langmuir e modello spettroscopico}
+\chaptermark{OES e sonda di Langmuir per plasma di Argon}
+
+L'obiettivo di questo esperimento è quello di verificare l'effettiva validità del modello spettroscopico per calcolare la densità e la temperatura elettronica di un plasma.\\
+\`E stato fatto un confronto tra i dati acquisiti tramite sonda di Langmuir e tramite spettroscopia ottica per verificarne la conformità. Si è quindi visto che 
+l'applicazione del modello spettroscopico è un buon metodo sostitutivo di diagnostica nei casi in cui la sonda di Langmuir non è idonea: per esempio, vi sono casi in cui è necessario 
+avere una particolare configurazione del campo magnetico che non sempre garantisce la perpendicolarità tra le linee del suddetto e l'area di acquisizione della sonda. In quest'ultimo
+caso gli errori sui dati acquisiti sarebbero grandi e risulta quindi necessario avere un sistema di diagnostica differente quale è la spettroscopia ottica.
+
+\section{Strumenti utilizzati e il loro funzionamento: sonda di Langmuir e spettroscopio ottico}
+\subsection{Sonda di Langmuir}
+\subsection{Spettroscopio ottico}
+
+\section{Condizioni sperimentali e analisi dati}
+Le condizioni sperimentali utilizzate sono le seguenti:
+\begin{itemize}
+ \item corrente delle bobine di GyM fissa a $600\si{\ampere}$;
+ \item due differenti flussi di Argon, $0.5sccm$ e $3.0sccm$;
+ \item tre diverse potenze per le microonde, $20\%$, $40\%$, $60\%$.
+\end{itemize}
+
+Pressione dei neutri a plasma spento con flusso di Argon a $0.5sccm$: $P_n=3.1\cdot10^-5\si{\milli\bar}$
+Pressione dei neutri a plasma spento con flusso di Argon a $3.0sccm$: $P_n=1.73\cdot10^-4\si{\milli\bar}$
+
+\paragraph{Osservazioni} ~\\
+I primi dati raccolti in laboratorio sono stati quelli a $\text{Flusso}_\text{Ar}=0.5\text{sccm}$ e con potenza delle microonde al $40\%$. In questi dati si può notare la mancanza della pressione dei neutri durante l'acquisizione degli spettri. Successivamente si è deciso di registrare anche $P_{neutri}$ per tenere monitorata l'intera condione di acquisizione dati.\\
+Le variazioni di potenza delle microonde sono state effettuate riportando di volta in volta il gas alla condizione di "non-plasma" e aspettando lo stabilizzarsi della pressione in camera al valore registrato precedente alla prima accensione del plasma.\\
+Gli accorgimenti di qui sopra sono stati fatti per mantenere le condizioni del sistema il più possibile invariate, così da poter confrontare i dati raccolti a diversi flussi e potenze in modo consistente.
+
+\subsection{Analisi dati: profilo di densità a diverse pressioni e potenze}
+
+GRAFICI E COMMENTI
+\subsection{Analisi dati: profili di temperatura a diverse pressioni e potenze}
+
+GRAFICI E COMMENTI
+
+\subsection{Descrizione del programma utilizzato per l'analisi dati}
+In Allegato(VA FATTO RIFERIMENTO) viene riportato il programma scritto per l'analisi dei dati.\\
+DESCRIVIAMO A GRANDI LINEE COSA FA
+
+
+
+\section{Conclusioni finali}
+BLA BLA
+
+\section{File dati}
+\subsection{File utilizzati per Flusso di Argon a $0.5sccm$}
+
+\paragraph*{Potenza microonde $\text{20\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302lang04$	&$5.37\cdot10^{-5}$\\
+$2302lang05$	&$4.96\cdot10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302speca10$	&$300-600$	&$0.5$		&$5.04\cdot10^{-5}$\\
+$2302speca11$	&$600-800$	&$0.01$		&$5.00\cdot10^{-5}$\\
+$2302speca12$	&$480$		&$0.5$		&$5.00\cdot10^{-5}$\\
+$2302speca13$	&$480$		&$0.5$		&$5.00\cdot10^{-5}$\\
+$2302speca14$	&$480$		&$0.5$		&$4.96\cdot10^{-5}$\\
+$2302speca15$	&$750$		&$0.01$		&$4.96\cdot10^{-5}$\\
+$2302speca16$	&$750$		&$0.01$		&$4.96\cdot10^{-5}$\\
+$2302speca17$	&$750$		&$0.01$		&$4.96\cdot10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph*{Potenza microonde $\text{40\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+  \begin{tabular}{p{3cm}p{3cm}}
+  \toprule
+File name	&$P_{n}$ [$\si{\milli\bar}$]\\
+  \midrule
+$2302lang01$	&$8.5\cdot10^{-5}$\\
+$2302lang02$	&$7.5\cdot10^{-5}$\\
+$2302lang03$	&$7.3\cdot10^{-5}$\\
+  \bottomrule
+  \end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{3.5cm}p{3.5cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$}\\
+\midrule
+$2302speca1$	&$300-600$	&$0.5$\\
+$2302speca2$	&$600-800$	&$0.01$\\
+$2302speca3$	&$480$		&$0.5$\\
+$2302speca4$	&$750$		&$0.01$\\
+$2302speca5$	&$750$		&$0.01$\\
+$2302speca6$	&$750$		&$0.01$\\
+$2302speca7$	&$480$		&$0.5$\\
+$2302speca8$	&$480$		&$0.5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph*{Potenza microonde $\text{60\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$2302lang06$	&$4.06\cdot10^{-5}$\\
+$2302lang07$	&$4.04\cdot10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$2302speca18$	&$300-600$	&$0.5$		&$3.99\cdot10^{-5}$\\
+$2302speca19$	&$600-800$	&$0.01$		&$3.99\cdot10^{-5}$\\
+$2302speca20$	&$480$		&$0.5$		&$3.99\cdot10^{-5}$\\
+$2302speca21$	&$480$		&$0.5$		&$3.99\cdot10^{-5}$\\
+$2302speca22$	&$480$		&$0.5$		&$3.99\cdot10^{-5}$\\
+$2302speca23$	&$750$		&$0.01$		&$4.02\cdot10^{-5}$\\
+$2302speca24$	&$750$		&$0.01$		&$4.02\cdot10^{-5}$\\
+$2302speca25$	&$750$		&$0.01$		&$4.02\cdot10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+\subsubsection{File utilizzati per Flusso di Argon a $3.0sccm$}
+
+\paragraph*{Potenza microonde $\text{20\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302lang08$	&$1.88\cdot10^{-4}$\\
+$2302lang09$	&$1.89\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302speca26$	&$300-600$	&$1.0$		&$1.89\cdot10^{-4}$\\
+$2302speca27$	&$600-800$	&$0.01$		&$1.83\cdot10^{-4}$\\
+$2302speca28$	&$480$		&$1.0$		&$1.89\cdot10^{-4}$\\
+$2302speca29$	&$480$		&$1.0$		&$1.89\cdot10^{-4}$\\
+$2302speca30$	&$480$		&$1.0$		&$1.89\cdot10^{-4}$\\
+$2302speca31$	&$750$		&$0.01$		&$1.89\cdot10^{-4}$\\
+$2302speca32$	&$750$		&$0.01$		&$1.89\cdot10^{-4}$\\
+$2302speca33$	&$750$		&$0.01$		&$1.89\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\paragraph*{Potenza microonde $\text{40\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302lang10$	&$1.99\cdot10^{-4}$\\
+$2302lang11$	&$2.00\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\					&\\
+\midrule
+$2302speca34$	&$300-600$	&$0.5$		&$2.00\cdot10^{-4}$\\
+$2302speca35$	&$600-800$	&$0.01$		&$2.00\cdot10^{-4}$\\
+$2302speca36$	&$480$		&$0.5$		&$2.00\cdot10^{-4}$\\
+$2302speca37$	&$480$		&$0.5$		&$2.00\cdot10^{-4}$\\
+$2302speca38$	&$480$		&$0.5$		&$2.00\cdot10^{-4}$\\
+$2302speca39$	&$750$		&$0.01$		&$2.00\cdot10^{-4}$\\
+$2302speca40$	&$750$		&$0.01$		&$2.00\cdot10^{-4}$\\
+$2302speca41$	&$750$		&$0.01$		&$2.00\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph*{Potenza microonde $\text{60\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_{n}$ [$\si{\milli\bar}$]\\
+\midrule
+$2302lang12$	&$2.01\cdot10^{-4}$\\
+$2302lang13$	&$2.01\cdot10^{-4}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\					&\\
+\midrule
+$2302speca42$	&$300-600$	&$0.5$		&$2.01\cdot10^{-5}$\\
+$2302speca43$	&$600-800$	&$0.01$		&$2.01\cdot10^{-5}$\\
+$2302speca44$	&$480$		&$0.5$		&$2.01\cdot10^{-5}$\\
+$2302speca45$	&$480$		&$0.5$		&$2.01\cdot10^{-5}$\\
+$2302speca46$	&$480$		&$0.5$		&$2.01\cdot10^{-5}$\\
+$2302speca47$	&$750$		&$0.01$		&$2.01\cdot10^{-5}$\\
+$2302speca48$	&$750$		&$0.01$		&$2.01\cdot10^{-5}$\\
+$2302speca49$	&$750$		&$0.01$		&$2.01\cdot10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
