@@ -85,7 +85,7 @@ def fit_data(plt_data, initial_data, n_iterations, m_i):
     # to use it with the next fitting.
     # We define our first guessing parameters as fit_results.
     #We define 5 the initial electronic Temperature
-    fit_results = [(i_ionic_sat, alpha, v_floating, 7.)]
+    fit_results = [(i_ionic_sat, alpha, v_floating, 10.)]
     #separate list for the errors results from fitting
     error_results = [(0,0,0,0)]
     #list for reduced chi2 results
@@ -117,6 +117,10 @@ def fit_data(plt_data, initial_data, n_iterations, m_i):
     # discard the first temp value because it has been arbitrarly
     # set
     temp_fit = temp_fit[1:]
+    iterations_data = iterations_data[1:]
+    fit_results = fit_results[1:]
+    error_results = error_results[1:]
+    chi2r_results = chi2r_results[1:]
     #find the minimum of the temperature to get all associated
     #parameters and use them as the best parameters for fitting
     min_temp = min(temp_fit)
@@ -267,7 +271,7 @@ def split_data(n, plt_data, v_float):
 
 def calculate_ne(I, sigma_I, T_e, sigma_Te, m_i):
         '''This function return (n_e, sigma_ne)'''
-        n_e = (2 * I) / (e * A * c) *  math.sqrt(m_i / (T_e))
+        n_e = (2 * I) / (e * A * c) *  math.sqrt(m_i * 10**6 / (T_e))
         sigma_ne = (I/(e*c*A))*math.sqrt(((m_i*sigma_I**2)/(I**2 * T_e)) +\
                     ((m_i* (sigma_Te**2))/(T_e**3)))
         return (n_e,sigma_ne)
