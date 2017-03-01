@@ -3,7 +3,19 @@ __pycache__
 .ipynb_checkpoints/
 data/
 OES_Studenti_2017/
-dati fantz/
+fantz-data/
+Relazione_Gym/*.aux
+Relazione_Gym/*.lof
+Relazione_Gym/*.log
+Relazione_Gym/*.lot
+Relazione_Gym/*.fls
+Relazione_Gym/*.out
+Relazione_Gym/*.toc
+Relazione_Gym/*.fmt
+Relazione_Gym/*.fot
+Relazione_Gym/*.cb
+Relazione_Gym/*.cb2
+Relazione_Gym/*.jpg
 2302/
 2702/
 .idea/
