@@ -95,7 +95,7 @@ def elaborate_dataset(fit_param, print_fig, input_dir, output_dir, capacity_1,
             "id": fit_param['id'],
             "probe": 1,
             "W_em": fit_param['W_em'],
-            "P": fit_param['P'],
+            "P": fit_param['P']*fit_param['ampl_P'],
             "I_B": fit_param['I_B'],
             "x": fit_param['x'],
             "P_off": fit_param['P_off']
