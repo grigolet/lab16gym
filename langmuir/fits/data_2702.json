@@ -1,0 +1,83 @@
+{
+    "input_dir" : "../data/data_raw-2702",
+    "output_dir": "../data/data-2702",
+    "capacity_1":0,
+    "capacity_2":0,
+    "offset_1": 0,
+    "offset_2": 0,
+    "R_1":470,
+    "R_2":470,
+    "probes" : [1],
+    "columns1":[0,1,2],
+    "columns2":[0,1,2],
+    "params": {
+        "m_i": 37192
+    },
+    "fits": [
+        {
+            "id":"2702lang01",
+            "zones":[-45,-15,30],
+            "bins":[100,100],
+            "ampl_scheda":7.41,
+            "ampl_res":10,
+            "n_fit_iter":50,
+            "W_em": 20,
+            "P": 1.73e-4,
+            "I_B":600,
+            "x": 0,
+            "P_off": 1.73e-4
+        },
+        {
+            "id":"2702lang02",
+            "zones":[-45,-15,30],
+            "bins":[100,100],
+            "ampl_scheda":7.41,
+            "ampl_res":10,
+            "n_fit_iter":50,
+            "W_em": 40,
+            "P": 1.8e-4,
+            "I_B":600,
+            "x": 0,
+            "P_off": 1.73e-4
+        },
+        {
+            "id":"2702lang03",
+            "zones":[-45,-15,30],
+            "bins":[100,100],
+            "ampl_scheda":7.41,
+            "ampl_res":10,
+            "n_fit_iter":50,
+            "W_em": 40,
+            "P": 1.8e-4,
+            "I_B":600,
+            "x": 0,
+            "P_off": 1.73e-4
+        },
+        {
+            "id":"2702lang04",
+            "zones":[-45,-15,30],
+            "bins":[100,100],
+            "ampl_scheda":7.41,
+            "ampl_res":10,
+            "n_fit_iter":50,
+            "W_em": 60,
+            "P": 1.8e-4,
+            "I_B":600,
+            "x": 0,
+            "P_off": 1.73e-4
+        },
+        {
+            "id":"2702lang05",
+            "zones":[-45,-15,30],
+            "bins":[100,100],
+            "ampl_scheda":7.41,
+            "ampl_res":10,
+            "n_fit_iter":50,
+            "W_em": 60,
+            "P": 1.81e-4,
+            "I_B":600,
+            "x": 0,
+            "P_off": 1.73e-4
+        }
+    ]
+}

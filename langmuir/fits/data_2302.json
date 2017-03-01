@@ -10,7 +10,9 @@
     "probes" : [1],
     "columns1":[0,1,2],
     "columns2":[0,1,2],
-    "params": {},
+    "params": {
+        "m_i": 1877
+    },
     "fits": [
         {
             "id":"2302lang01",
