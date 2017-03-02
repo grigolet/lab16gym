@@ -3,6 +3,7 @@
 \usepackage{enumerate}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
+\usepackage{lipsum} 
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{siunitx}
@@ -22,7 +23,7 @@
 \usepackage{subfig}
 \usepackage{float}
 \usepackage{caption}
-\usepackage[Glenn]{fncychap}
+%\usepackage[Glenn]{fncychap}
 \captionsetup[table]{position=top}
 \usepackage{booktabs}
 \usepackage{colortbl,array}
@@ -31,6 +32,7 @@
 \usepackage{titling}
 \usepackage{geometry}
 \usepackage{emptypage}
+
 \geometry{a4paper, top=3cm, bottom=4cm, left=3cm, right=3cm, heightrounded, bindingoffset=5mm}
 
 \lstdefinestyle{custompy}{
@@ -71,17 +73,26 @@
 \makeatletter
 \def\@makefnmark{\hbox{\@textsuperscript{\normalfont(\@thefnmark)}}}
 \makeatother
+
 \usepackage{setspace}
 \onehalfspacing
 
-
 \usepackage{newlfont}
 \vspace{\stretch{2}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\filcenter}
+{\LARGE\thechapter}
+{1ex}
+{\titlerule[2pt]
+\vspace{2ex}%
+\LARGE}
+[\vspace{1ex}%
+{\titlerule[2pt]}]
+
 \begin{document}
 
 \frontmatter
-
-
 \begin{center}
 {\large \center \bf{Università degli Studi di Milano-Bicocca}}
  \center{\includegraphics[width=4cm]{logo} }
@@ -107,6 +118,7 @@ Magatti Demetrio, Muscente Paola e Rigoletti Gianluca\\\vspace{.1cm}}}
 	{Anno Accademico 2016/2017}
 \end{center} 
 
+\tableofcontents 
 \mainmatter
 \include{Esperimento_23022017}
 \include{Esperimento_27022017}
