@@ -4,6 +4,11 @@ import peakutils
 import json
 from scipy import interpolate
 
+# useful constants
+T_amb = 2.57e-2 # eV
+q_e = 16e-19 # Coulomb
+h_c = 1.9864e-25 # Joule * m * s^-1
+L_plasma = 2e8 # nm = 20 cm
 
 def get_peak_ratio(file_name):
     wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
@@ -81,6 +86,65 @@ def get_absolute_intensity(I_lamp_file, rho_file, I_argon_file, acq_time):
     I_abs_750 = I_correct[abs(x_rho - 750).argmin()]*10e-4
 
     return [np.array([x_rho, I_correct]), n_0, X750, I_abs_750]
+
+
+def get_absolute_intensity_2(file_name, t_acquisition, l_peak,
+                             i_lamp_file='../OES_Studenti_2017/Ilamp_acquisitiontime_3s.txt',
+                             t_lamp=3,
+                             rho_file='../OES_Studenti_2017/riflettivitadiffusore.txt'):
+    """
+    Returns the peak intensity with the proper calibration.
+
+    Parameters
+    ----------
+    file_name : str
+      the string to the file path of the spectrum
+    t_acquisition : float
+      the acquisition time for the spectrum file
+    l_peak : float
+      the interested wavelength for the peak, in nm
+    """
+    # read data: l = lambda, i = intensity
+    l, i = np.genfromtxt(file_name, unpack=True)
+    l_lamp, i_lamp = np.genfromtxt(i_lamp_file, unpack=True)
+    l_rho, rho = np.genfromtxt(rho_file, unpack=True, skip_header=2, delimiter=',')
+    # normalize data for its acquisition time
+    i_lamp = np.divide(i_lamp, t_lamp)
+    i = np.divide(i, t_acquisition)
+    # interpolate data in order to have all the same l-coordinates.
+    # we should interpolate taking as reference the array with the
+    # most number of points (i.e. the plasma file)
+    i_lamp = np.interp(l, i_lamp, l_lamp)
+    rho = np.interp(l, rho, l_rho)
+    # now all the intensities have the same number of points and are evaluated
+    # at the same wavelengths l.
+    diffuser_radiance = np.sqrt(2) / (2 * np.pi) * irradiance(l) * rho
+    i_abs = (i * diffuser_radiance) / i_lamp
+    # i_abs is a vector with different values for different wavelengths.
+    # We're interested in the closest intensity corresponding to i_abs(l_peak)
+    i_abs_l_peak = i_abs[np.abs(l - l_peak).argmin()]
+    # next we need to convert i_abs_l_peak into the proper unit
+    i_abs_l_peak = i_abs_l_peak * (l_peak / (h_c)) * ((4 * np.pi) / L_plasma) * 1e-18
+
+    return i_abs_l_peak
+
+
+def get_pec(i_abs, pressure, pressure_correction, n_e):
+    """
+    Return the photon emissivity coefficient for a given intensity,
+    electronic density and neutral pressure. The intensity should be expressed
+    as cm^-3 s^-1, the electronic density as cm^-3, the pressure correction
+    as a pure number and the pressure in mbar.
+    This function assumes the temperature of the neutrals to be ~ 300K
+    """
+    # correct pressure and convert it from mbar to pascal
+    pressure_pascal = pressure * pressure_correction * 100
+    # we have m^-3 but we need cm^-3: multiply by 1e-6
+    n_0 = (pressure_pascal / (q_e * T_amb)) * 1e-6
+    # pec units should be cm^3 * s^-1
+    pec = i_abs / (n_0 * n_e)
+
+    return pec
 
 
 def get_profile_ratio(config_file, data_path):
