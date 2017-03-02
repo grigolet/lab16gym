@@ -151,7 +151,7 @@ def get_density(peak_ratio, fants_file='fants.txt'):
     nella cella immediatamente successiva a quella che stampa i risultati, quando operiamo su tutti i file specificati nel json) quando 
     chiamo f_interp(peak_ratio) nel ciclo for il risultato non è un numero, ma un array di numeri, uno per ogni file analizzato; 
     cerco quindi di mettere in n_e[i] un vettore, da cui l'errore "setting array element with a sequence". Per risolvere il problema
-    se il peak_ratio in ingresso è un vettore faccio eseguire il ciclo sopra per ogni elemento di peak_ratio; 
+    se il peak_ratio in ingresso è un vettore faccio eseguire il ciclo sopra per ogni elemento di peak_ratio;  
     il ciclo sopra ritorna tre numeri, quello sotto tre array di numeri;
     """               
                                                 
@@ -176,3 +176,66 @@ def get_density(peak_ratio, fants_file='fants.txt'):
             n_e_max_array[j] = max(n_e)   
         
         return n_e_mean_array, n_e_min_array, n_e_max_array
+
+def read_adas_file(file_path, element='ar'):
+    '''
+    This function reads the adas .dat file and 
+    returns a pandas dataframe with three cols:
+    n_e, T_e, X
+    '''
+    # open the file, read the number of lines and save
+    # the line where densities are stored (line 2)
+    with open(file_path) as file:
+        for line_number, line_text in enumerate(file):
+            if line_number == 1:
+                density_index = line_text
+    num_lines = line_number + 1
+
+    if (element == 'ar'):
+        # read two dataframes as suggested on stackoverflow
+        df2 = pd.read_csv(file_path, delim_whitespace=True,
+                          skiprows=filter(lambda x: x%2==0, range(3, num_lines)),
+                          header=3)
+        df3 = pd.read_csv(file_path, delim_whitespace=True,
+                          skiprows=filter(lambda x: x%2==1, range(2, num_lines)),
+                          header=2)
+
+    # concat the dataframes in order to have a single dataframe
+    df = pd.concat([df2, df3], axis=1)
+    # add the index values to the dataframes (i.e the densities)
+    df.index = density_index.strip().split(' ')
+    # add the densities as a column
+    df['n_e'] = df.index.values
+    # reorder the dataframe for data analysis: we want three columns,
+    # n_e, T_e, X_e
+    df_melt = pd.melt(df, id_vars='n_e', var_name='T_e', value_name='X_e')
+    # convert all the values in the column to numbers instead of string
+    df_melt = df_melt.apply(pd.to_numeric)
+    
+    return df_melt
+
+def interpolate_dataframe(df, points):
+    '''
+    This function takes a pandas dataframe with three cols:
+    n_e, T_e, X and a points array with shape (n, 2).
+    It returns an array with dimension (n,) with the 
+    interpolated temperature values. For faster and
+    simpler interpolation it converts both the n_e and T_e
+    into log10 arrays.
+    '''
+    # interpolation:
+    # first, we can see that both p.e.c and n_e have very
+    # high range. So for a simpler interpolation we can
+    # use their logarithms
+    # log_n = np.log10(df_melt.n_e)
+    # log_pec = np.log10(df_melt.n_e)
+    df_melt[['n_e', 'X_e']] = df_melt[['n_e', 'X_e']].apply(np.log10)
+
+    # we want the following relation:
+    # T = T(n, pec)
+    # let's see if scipy.interpolate.griddata can do the work
+    known_points = df_melt[['n_e', 'X_e']]
+    # random_points = np.array([np.linspace(10, 16, 1000), np.linspace(-12, -74, 1000)]).T
+    grid = interpolate.griddata(known_points, df_melt.T_e, points, method='cubic')
+    
+    return grid
