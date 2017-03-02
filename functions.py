@@ -100,7 +100,7 @@ def get_profile_ratio(config_file, data_path):
 
     # iterate over the items in teh config file to 
     # get the powers and file names
-    for key, value in config_file.items():
+    for key, value in config_file['n'].items():
         peak_ratio = get_peak_ratio(data_path + key + '.dat')
         if value['w'] not in results.keys():
             results[value['w']] = []
