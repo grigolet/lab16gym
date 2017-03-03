@@ -186,7 +186,7 @@ def get_profile_ratio(config_file, data_path):
     return ratio_mean, w_em, results
 
 
-def get_density(peak_ratio, fants_file='fants.txt'):
+def get_density(peak_ratio, fants_file='../fantz-data/fants.txt'):
     """
     Take an array of line ratios (I480/I488) and interpolate the fants.txt file
     in order to get the corresponding density
