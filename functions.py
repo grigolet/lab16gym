@@ -3,6 +3,7 @@ import numpy as np
 import peakutils
 import json
 from scipy import interpolate
+import pandas as pd
 
 # useful constants
 T_amb = 2.57e-2 # eV
@@ -242,11 +243,22 @@ def get_density(peak_ratio, fants_file='../fantz-data/fants.txt'):
         return n_e_mean_array, n_e_min_array, n_e_max_array
 
 def read_adas_file(file_path, element='ar'):
-    '''
+    """
     This function reads the adas .dat file and 
     returns a pandas dataframe with three cols:
     n_e, T_e, X
-    '''
+
+    Parameters
+    ---------
+    file_path : str
+      the path to adas file
+    element : str
+      either 'ar' for Argon or 'de' for Deuterium
+
+    Returns
+    -------
+    DataFrame
+    """
     # open the file, read the number of lines and save
     # the line where densities are stored (line 2)
     with open(file_path) as file:
@@ -279,27 +291,27 @@ def read_adas_file(file_path, element='ar'):
     return df_melt
 
 def interpolate_dataframe(df, points):
-    '''
+    """
     This function takes a pandas dataframe with three cols:
     n_e, T_e, X and a points array with shape (n, 2).
     It returns an array with dimension (n,) with the 
     interpolated temperature values. For faster and
     simpler interpolation it converts both the n_e and T_e
     into log10 arrays.
-    '''
+    """
     # interpolation:
     # first, we can see that both p.e.c and n_e have very
     # high range. So for a simpler interpolation we can
     # use their logarithms
     # log_n = np.log10(df_melt.n_e)
     # log_pec = np.log10(df_melt.n_e)
-    df_melt[['n_e', 'X_e']] = df_melt[['n_e', 'X_e']].apply(np.log10)
+    df[['n_e', 'X_e']] = df[['n_e', 'X_e']].apply(np.log10)
 
     # we want the following relation:
     # T = T(n, pec)
     # let's see if scipy.interpolate.griddata can do the work
-    known_points = df_melt[['n_e', 'X_e']]
+    known_points = df[['n_e', 'X_e']]
     # random_points = np.array([np.linspace(10, 16, 1000), np.linspace(-12, -74, 1000)]).T
-    grid = interpolate.griddata(known_points, df_melt.T_e, points, method='cubic')
+    grid = interpolate.griddata(known_points, df.T_e, points, method='cubic')
     
     return grid
