@@ -271,8 +271,8 @@ def split_data(n, plt_data, v_float):
 
 def calculate_ne(I, sigma_I, T_e, sigma_Te, m_i):
         '''This function return (n_e, sigma_ne)'''
-        n_e = (2 * I) / (e * A * c) *  math.sqrt(m_i * 10**6 / (T_e))
-        sigma_ne = (I/(e*c*A))*math.sqrt(((m_i*sigma_I**2)/(I**2 * T_e)) +\
+        n_e = I / (0.6 * e * A * c) *  math.sqrt(m_i * 10**6 / (T_e))
+        sigma_ne = ( I/(e*c*A))*math.sqrt(((m_i*sigma_I**2)/(I**2 * T_e)) +\
                     ((m_i* (sigma_Te**2))/(T_e**3)))
         return (n_e,sigma_ne)
 
