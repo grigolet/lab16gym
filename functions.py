@@ -130,7 +130,7 @@ def get_absolute_intensity_2(file_name, t_acquisition, l_peak,
     return i_abs_l_peak
 
 
-def get_pec(i_abs, pressure, pressure_correction, n_e):
+def get_pec(i_abs, pressure, n_e):
     """
     Return the photon emissivity coefficient for a given intensity,
     electronic density and neutral pressure. The intensity should be expressed
@@ -139,7 +139,7 @@ def get_pec(i_abs, pressure, pressure_correction, n_e):
     This function assumes the temperature of the neutrals to be ~ 300K
     """
     # correct pressure and convert it from mbar to pascal
-    pressure_pascal = pressure * pressure_correction * 100
+    pressure_pascal = pressure * 100
     # we have m^-3 but we need cm^-3: multiply by 1e-6
     n_0 = (pressure_pascal / (q_e * T_amb)) * 1e-6
     # pec units should be cm^3 * s^-1
