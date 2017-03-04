@@ -312,6 +312,6 @@ def interpolate_dataframe(df, points):
     # let's see if scipy.interpolate.griddata can do the work
     known_points = df[['n_e', 'X_e']]
     # random_points = np.array([np.linspace(10, 16, 1000), np.linspace(-12, -74, 1000)]).T
-    grid = interpolate.griddata(known_points, df.T_e, points, method='cubic')
+    grid = interpolate.griddata(known_points, df.T_e, points, method='linear')
     
     return grid
