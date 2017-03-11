@@ -11,26 +11,53 @@ q_e = 16e-19 # Coulomb
 h_c = 1.9864e-25 # Joule * m * s^-1
 L_plasma = 2e8 # nm = 20 cm
 
-def get_peak_ratio(file_name):
-    wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
+def get_peak_ratio(file_name, lambda_1, lambda_2, file_name_2 = None, acq_time_1 = None, acq_time_2 = None):
 
-    peakind = peakutils.indexes(intensity, thres=0.1, min_dist=0.5)
+    if (file_name_2):
+        wavelenght_1, intensity_1 = np.genfromtxt(file_name, unpack=True)
+        intensity_1 = intensity_1/acq_time_1
+        
+        peakind = peakutils.indexes(intensity_1, thres=0.1, min_dist=0.5)
+        x_fit_1=np.zeros(21)
+        y_fit_1=np.zeros(21)
+        
+        for i in range(0,21):
+            x_fit_1[i] = wavelenght_1[peakind[np.abs(wavelenght_1[peakind] - lambda_1).argmin()] + i - 10]
+            y_fit_1[i] = intensity_1[peakind[np.abs(wavelenght_1[peakind] - lambda_1).argmin()] + i - 10]
+        I1, x1, s1 = peakutils.peak.gaussian_fit(x_fit_1, y_fit_1, center_only=False)
+        
+        wavelenght_2, intensity_2 = np.genfromtxt(file_name_2, unpack=True)
+        intensity_2 = intensity_2/acq_time_2
+        
+        peakind = peakutils.indexes(intensity_2, thres=0.1, min_dist=0.5)
+        x_fit_2=np.zeros(21)
+        y_fit_2=np.zeros(21)
+        
+        for i in range(0,21):
+            x_fit_2[i] = wavelenght_2[peakind[np.abs(wavelenght_2[peakind] - lambda_2).argmin()] + i - 10]
+            y_fit_2[i] = intensity_2[peakind[np.abs(wavelenght_2[peakind] - lambda_2).argmin()] + i - 10]
+        I2, x2, s2 = peakutils.peak.gaussian_fit(x_fit_2, y_fit_2, center_only=False)
+        
+    else:        
+        wavelenght, intensity = np.genfromtxt(file_name, unpack=True)
     
-    x_fit=np.zeros(21)
-    y_fit=np.zeros(21)
-
-    for i in range(0,21):
-        x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - 480).argmin()] + i - 10]
-        y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - 480).argmin()] + i - 10]
-    I480, x480, s480 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
-            
-    for i in range(0,21):
-        x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - 488).argmin()] + i - 10]
-        y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - 488).argmin()] + i - 10]
-    I488, x488, s488 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
-
-    ratio = I480 / I488
-    ratio_err = ratio*(s480/I480 + s488/I488)
+        peakind = peakutils.indexes(intensity, thres=0.1, min_dist=0.5)
+        
+        x_fit=np.zeros(21)
+        y_fit=np.zeros(21)
+    
+        for i in range(0,21):
+            x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - lambda_1).argmin()] + i - 10]
+            y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - lambda_1).argmin()] + i - 10]
+        I1, x1, s1 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
+                
+        for i in range(0,21):
+            x_fit[i] = wavelenght[peakind[np.abs(wavelenght[peakind] - lambda_2).argmin()] + i - 10]
+            y_fit[i] = intensity[peakind[np.abs(wavelenght[peakind] - lambda_2).argmin()] + i - 10]
+        I2, x2, s2 = peakutils.peak.gaussian_fit(x_fit, y_fit, center_only=False)
+    
+    ratio = I1 / I2
+    ratio_err = ratio*(s1/I1 + s2/I2)
 
     return ratio
 
@@ -186,6 +213,60 @@ def get_profile_ratio(config_file, data_path):
 
     return ratio_mean, w_em, results
 
+def get_temperature(peak_ratio, file='../data/2702/ratio_de.csv'):
+    """
+    Take an array of line ratios and interpolate the ratio_de.csv file
+    in order to get the corresponding temperature
+    """
+    
+    if (not isinstance (peak_ratio, np.ndarray)):
+        # read data
+        temperature, r_1, r_2, r_3, r_4, r_5 = np.genfromtxt(fants_file, unpack=True)
+        #ratio = np.array([r_1, r_2, r_3, r_4, r_5])
+        lista = [r_1, r_2, r_3, r_4, r_5]
+        T_e = np.empty([5])
+        i=0
+        for r_i in lista:
+            f_interp = interpolate.interp1d(r_i, temperature)
+            np.vectorize(f_interp)
+            T_e[i] = f_interp(peak_ratio)
+            i = i + 1
+        T_e_mean = np.mean(T_e)
+        T_e_min = min(T_e)
+        T_e_max = max(T_e)
+        return T_e_mean, T_e_min, T_e_max
+
+    """
+    Per capire le modifiche nel ciclo sotto secondo me è meglio guardare il ciclo sopra, che è quello "vecchio" con la sola aggiunta
+    della dondizione. Se il peak_ratio che prende in ingresso la funzione è un vettore (cosa che avviene in in peak_analysis.ipynb 
+    nella cella immediatamente successiva a quella che stampa i risultati, quando operiamo su tutti i file specificati nel json) quando 
+    chiamo f_interp(peak_ratio) nel ciclo for il risultato non è un numero, ma un array di numeri, uno per ogni file analizzato; 
+    cerco quindi di mettere in T_e[i] un vettore, da cui l'errore "setting array element with a sequence". Per risolvere il problema
+    se il peak_ratio in ingresso è un vettore faccio eseguire il ciclo sopra per ogni elemento di peak_ratio;  
+    il ciclo sopra ritorna tre numeri, quello sotto tre array di numeri;
+    """               
+                                                
+    if (isinstance (peak_ratio, np.ndarray)):
+        temp, r_1, r_2, r_3, r_4, r_5 = np.genfromtxt(fants_file, unpack=True)
+        lista = [r_1, r_2, r_3, r_4, r_5]
+        T_e = np.empty([7])
+        l = len(peak_ratio)
+        T_e_mean_array = np.empty([l])
+        T_e_min_array = np.empty([l])
+        T_e_max_array = np.empty([l])
+        
+        for j in range (0,l):
+            i=0
+            for r_i in lista:
+                f_interp = interpolate.interp1d(r_i, temp)
+                np.vectorize(f_interp)
+                T_e[i] = f_interp(peak_ratio[j])
+                i = i + 1
+            T_e_mean_array[j] = np.mean(T_e)
+            T_e_min_array[j] = min(T_e)
+            T_e_max_array[j] = max(T_e)   
+        
+        return n_e_mean_array, n_e_min_array, n_e_max_array
 
 def get_density(peak_ratio, fants_file='../fantz-data/fants.txt'):
     """
