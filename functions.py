@@ -13,7 +13,7 @@ L_plasma = 2e8 # nm = 20 cm
 
 def get_peak_ratio(file_name, lambda_1, lambda_2, file_name_2 = None, acq_time_1 = None, acq_time_2 = None):
 
-    if (file_name_2):
+    if (file_name_2 is not None):
         wavelenght_1, intensity_1 = np.genfromtxt(file_name, unpack=True)
         intensity_1 = intensity_1/acq_time_1
         
