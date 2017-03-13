@@ -1,8 +1,7 @@
-\chapter{Calcolo della densità e della temperatura elettronica per un plasma di Deuterio attraverso due differenti tecniche: sonda di Langmuir e modello spettroscopico}
-\chaptermark{Plasma di Deuterio}
+\chapter{Calcolo della densità e della temperatura elettronica per un plasma di Argon, Deuterio e Azoto attraverso due differenti tecniche: sonda di Langmuir e modello spettroscopico}
+\chaptermark{Plasma di Argon, Deuterio e Azoto}
 
-
-L'obiettivo di questo esperimento è il medesimo dell'esperimento precedente ma questa volta lo studio viene effettuato su un plasma di Deuterio.
+L'obiettivo di questo esperimento è il medesimo degli esperimenti precedenti ma questa volta lo studio viene effettuato su un plasma di Argon, Deuterio e Azoto.
 
 \section{Strumenti utilizzati e il loro funzionamento: sonda di Langmuir e spettroscopio ottico}
 Per descrizione dettagliata degli strumenti vedi capitolo precedente, \textit{Sezione}~\ref{sec:strumenti}.
@@ -11,20 +10,23 @@ Per descrizione dettagliata degli strumenti vedi capitolo precedente, \textit{Se
 Le condizioni sperimentali utilizzate sono le seguenti:
 \begin{itemize}
  \item corrente delle bobine di GyM fissa a $600\si{\ampere}$;
- \item due differenti pressioni di Deuterio, $4.08\cdot10^{-4}mbar$ (circa $45sccm$ di flusso) e $9.31\cdot10^{-5}mbar$ (circa $10sccm$ di flusso);
- \item diverse potenze per le microonde, $20\%$, $30\%$, $40\%$, $50\%$ e $60\%$.
+ 
+ VANNO FATTI I CALCOLI DELLE PERCENTUALI E POI CORRETTE tutte LE PRESSIONI CON I FATTORI CORETTIVI rispettivi
+ 
+ \item due differenti condizioni di miscela\\
+ $\text{Ar}=  $,  $\text{Ar}+\text{N}_2=  $, $\text{Ar}+\text{N}_2+\text{De}=  $\\
+ $\text{Ar}=  $,  $\text{Ar}+\text{N}_2=  $, $\text{Ar}+\text{N}_2+\text{De}=  $\\
+ le pressioni riportate sono quelle a plasma spento;
+ 
+ \item diverse potenze per le microonde, $20\%$, $30\%$, $40\%$, $50\%$, $60\%$ e $90\%$.
 \end{itemize}
 
 
-\paragraph{Osservazioni} ~\\
-A differenza dell'esperimento precedente, si è deciso di mantenere costanti le due pressioni di gas a plasma spento, con valori scelti di $4.08\cdot10^{-4}mbar$ e $9.31\cdot10^{-5}mbar$,
-piuttosto che mantenerne fisso il flusso. 
-Per mantenere le pressioni tali si sono operate a volte delle leggere variazioni di flusso di Deuterio.\\
-Le variazioni di potenza delle microonde sono state effettuate riportando di volta in volta il gas alla condizione di "non-plasma" e aspettando lo stabilizzarsi della pressione ai due valori
-indicati predentemente per uno e l'altro caso.\\
-Gli accorgimenti di qui sopra sono stati fatti per mantenere le condizioni del sistema il più possibile invariate, così da poter confrontare i dati raccolti a diversi flussi e potenze in modo consistente.\\
-L'accensione del plasma, nel caso di plasma di Deuterio, è visibile anche attraverso una discesa seguita da una salita della pressione in camera che raggiunge un \textit{plateau} dopo qualche secondo dall'accensione delle microonde.
-A bassa pressione e bassa potenza delle microonde, $9.31\cdot10^{-5}$ con $20\%$ di potenza, si è visto che l'accensione del plasma avviene senza un abbassamento precedente alla salita della pressione.
+\paragraph{Osservazioni}
+La sonda di Langmuir si trova a $2\si{\centi\meter}$ dal centro macchina.
+In questo esperimento le variazioni di potenza delle microonde non sono state effettuate riportando di volta in volta il gas alla condizione di "non-plasma" ma aspettando semplicemente lo stabilizzarsi 
+della pressione una volta impostata la potenza desiderata.\\
+Lo studio spettrocopico verrà effettutato sul Argon e Deuterio anche perchè l'Azotosi dissolve difficilmente e si possono vedere al massimo delle piccolo linee atomiche.
 
 \subsection{Analisi dati: profilo di densità a diverse pressioni e potenze}
 
@@ -42,7 +44,9 @@ DESCRIVIAMO A GRANDI LINEE COSA FA
 BLA BLA
 
 \section{File dati}
-\subsection{File utilizzati per pressione di Deuterio a $4.08\cdot10^{-4}mbar$}
+MANCANO TUTTE LE PRESSIONI
+
+\subsection{File utilizzati per pressione totale di $   $}
 
 \paragraph*{Potenza microonde $\text{20\%}$} ~\\
 Caratteristiche tensione-corrente della sonda di Langmuir:
@@ -51,7 +55,9 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang01$	&$4.15\cdot10^{-4}$\\
+$0603lang01$	&$   $\\
+$0603lang02$	&$   $\\
+$0603lang03$	&$   $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -62,12 +68,10 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde1$	&$400-500$	&$0.2$		&$4.20\cdot10^{-4}$\\
-$2702specde2$	&$400-500$	&$0.2$		&$4.20\cdot10^{-4}$\\
-$2702specde3$	&$400-500$	&$0.2$		&$4.20\cdot10^{-4}$\\
-$2702specde4$	&$656$		&$0.05$		&$4.20\cdot10^{-4}$\\
-$2702specde5$	&$656$		&$0.05$		&$4.20\cdot10^{-4}$\\
-$2702specde6$	&$656$		&$0.05$		&$4.20\cdot10^{-4}$\\
+$0603specnad11$	&$300-600$	&$0.2$		&$  $\\
+$0603specde5$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad12$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad13$	&$600-800$	&$0.05$		&$  $\\
 
 \bottomrule
 \end{tabular}
@@ -80,8 +84,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
   \toprule
 File name	&$P_{n}$ [$\si{\milli\bar}$]\\
   \midrule
-$2702lang16$	&$4.51\cdot10^{-4}$\\
-$2702lang17$	&$4.51\cdot10^{-4}$\\
+$0603lang04$	&$  $\\
+$0603lang05$	&$  $\\
 
   \bottomrule
   \end{tabular}
@@ -93,12 +97,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde49$	&$400-500$	&$0.2$		&$4.49\cdot10^{-4}$\\
-$2702specde50$	&$400-500$	&$0.2$		&$4.51\cdot10^{-4}$\\
-$2702specde51$	&$400-500$	&$0.2$		&$4.51\cdot10^{-4}$\\
-$2702specde52$	&$656$		&$0.05$		&$4.51\cdot10^{-4}$\\
-$2702specde53$	&$656$		&$0.05$		&$4.51\cdot10^{-4}$\\
-$2702specde54$	&$656$		&$0.05$		&$4.51\cdot10^{-4}$\\
+$0603specnad14$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad15$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad16$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad17$	&$600-800$	&$0.05$		&$  $\\
+
 
 \bottomrule
 \end{tabular}
@@ -111,8 +114,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang02$	&$4.27\cdot10^{-4}$\\
-$2702lang03$	&$4.32\cdot10^{-4}$\\
+$0603lang06$	&$  $\\
+$0603lang07$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -123,12 +126,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde7$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde8$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde9$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde10$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
-$2702specde11$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
-$2702specde12$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
+$0603specnad18$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad19$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad20$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad21$	&$600-800$	&$0.05$		&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
@@ -140,8 +142,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang18$	&$4.42\cdot10^{-4}$\\
-$2702lang19$	&$4.46\cdot10^{-4}$\\
+$0603lang08$	&$  $\\
+$0603lang09$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -152,12 +154,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde55$	&$400-500$	&$0.2$		&$4.46\cdot10^{-4}$\\
-$2702specde56$	&$400-500$	&$0.2$		&$4.46\cdot10^{-4}$\\
-$2702specde57$	&$400-500$	&$0.2$		&$4.46\cdot10^{-4}$\\
-$2702specde58$	&$656$		&$0.05$		&$4.46\cdot10^{-4}$\\
-$2702specde59$	&$656$		&$0.05$		&$4.46\cdot10^{-4}$\\
-$2702specde60$	&$656$		&$0.05$		&$4.46\cdot10^{-4}$\\
+$0603specnad22$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad23$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad24$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad25$	&$600-800$	&$0.05$		&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
@@ -169,8 +170,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang04$	&$4.32\cdot10^{-4}$\\
-$2702lang05$	&$4.34\cdot10^{-4}$\\
+$0603lang10$	&$  $\\
+$0603lang11$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -181,29 +182,53 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde13$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde14$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde15$	&$400-500$	&$0.2$		&$4.32\cdot10^{-4}$\\
-$2702specde16$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
-$2702specde17$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
-$2702specde18$	&$656$		&$0.05$		&$4.32\cdot10^{-4}$\\
+$0603specnad26$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad27$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad28$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad29$	&$600-800$	&$0.05$		&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
 
+\paragraph*{Potenza microonde $\text{90\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$0603lang12$	&$  $\\
+$0603lang13$	&$  $\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$0603specnad30$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad31$	&$600-800$	&$0.05$		&$  $\\
 
 
-\subsection{File utilizzati per pressione di Deuterio a $9.31\cdot10^{-5}mbar$}
+\bottomrule
+\end{tabular}
+\end{center}
 
-\paragraph*{Potenza microonde $\text{20\%}$ (Flusso $9.5sccm$) }~\\
+\subsection{File utilizzati per pressione totale di $  $}
+
+\paragraph*{Potenza microonde $\text{20\%}$}~\\
 Caratteristiche tensione-corrente della sonda di Langmuir:
 \begin{center}
 \begin{tabular}{p{3cm}p{3cm}}
 \toprule
 File name	&$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang12$	&$1.20\cdot10^{-4}$\\
-$2702lang13$	&$1.18\cdot10^{-4}$\\
+$0603lang14$	&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
@@ -214,12 +239,9 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde37$	&$400-500$	&$0.2$		&$1.19\cdot10^{-4}$\\
-$2702specde38$	&$400-500$	&$0.2$		&$1.19\cdot10^{-4}$\\
-$2702specde39$	&$400-500$	&$0.2$		&$1.19\cdot10^{-4}$\\
-$2702specde40$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-$2702specde41$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-$2702specde42$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
+$0603specnad32$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad33$	&$300-600$	&$0.2$		&$  $\\
+
 
 \bottomrule
 \end{tabular}
@@ -232,8 +254,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
   \toprule
 File name	&$P_{n}$ [$\si{\milli\bar}$]\\
   \midrule
-$2702lang14$	&$1.16\cdot10^{-4}$\\
-$2702lang15$	&$1.18\cdot10^{-4}$\\
+$0603lang16$	&$  $\\
+$0603lang17$	&$  $\\
 
   \bottomrule
   \end{tabular}
@@ -245,12 +267,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde43$	&$400-500$	&$0.2$		&$1.17\cdot10^{-4}$\\
-$2702specde44$	&$400-500$	&$0.2$		&$1.18\cdot10^{-4}$\\
-$2702specde45$	&$400-500$	&$0.2$		&$1.18\cdot10^{-4}$\\
-$2702specde46$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-$2702specde47$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-$2702specde48$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
+$0603specnad34$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad35$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad36$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad37$	&$600-800$	&$0.05$		&$  $\\
+
 
 \bottomrule
 \end{tabular}
@@ -263,8 +284,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang06$	&$1.04\cdot10^{-4}$\\
-$2702lang07$	&$1.08\cdot10^{-4}$\\
+$0603lang18$	&$  $\\
+$0603lang19$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -275,12 +296,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde19$	&$400-500$	&$0.2$		&$1.07\cdot10^{-4}$\\
-$2702specde20$	&$400-500$	&$0.2$		&$1.07\cdot10^{-4}$\\
-$2702specde21$	&$400-500$	&$0.2$		&$1.08\cdot10^{-4}$\\
-$2702specde22$	&$656$		&$0.05$		&$1.08\cdot10^{-4}$\\
-$2702specde23$	&$656$		&$0.05$		&$1.08\cdot10^{-4}$\\
-$2702specde24$	&$656$		&$0.05$		&$1.08\cdot10^{-4}$\\
+$0603specnad38$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad39$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad40$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad41$	&$600-800$	&$0.05$		&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
@@ -292,8 +312,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang08$	&$1.15\cdot10^{-4}$\\
-$2702lang09$	&$1.19\cdot10^{-4}$\\
+$0603lang20$	&$  $\\
+$0603lang21$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -304,13 +324,11 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde25$	&$400-500$	&$0.2$		&$1.16\cdot10^{-4}$\\
-$2702specde26$	&$400-500$	&$0.2$		&$1.16\cdot10^{-4}$\\
-$2702specde27$	&$400-500$	&$0.2$		&$1.16\cdot10^{-4}$\\
-$2702specde28$	&$656$		&$0.05$		&$1.16\cdot10^{-4}$\\
-$2702specde29$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-$2702specde30$	&$656$		&$0.05$		&$1.18\cdot10^{-4}$\\
-\bottomrule
+$0603specnad42$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad43$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad44$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad45$	&$600-800$	&$0.05$		&$  $\\
+
 \end{tabular}
 \end{center}
 
@@ -321,8 +339,8 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 \toprule
 File name	&$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702lang10$	&$1.15\cdot10^{-4}$\\
-$2702lang11$	&$1.61\cdot10^{-4}$\\
+$0603lang22$	&$  $\\
+$0603lang23$	&$  $\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -333,12 +351,39 @@ Spettri raccolti:
 \toprule
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
 \midrule
-$2702specde31$	&$400-500$	&$0.2$		&$1.49\cdot10^{-4}$\\
-$2702specde32$	&$400-500$	&$0.2$		&$1.49\cdot10^{-4}$\\
-$2702specde33$	&$400-500$	&$0.2$		&$1.50\cdot10^{-4}$\\
-$2702specde34$	&$656$		&$0.05$		&$1.55\cdot10^{-4}$\\
-$2702specde35$	&$656$		&$0.05$		&$1.60\cdot10^{-4}$\\
-$2702specde36$	&$656$		&$0.05$		&$1.61\cdot10^{-4}$\\
+$0603specnad46$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad47$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad48$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad49$	&$600-800$	&$0.05$		&$  $\\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph*{Potenza microonde $\text{90\%}$} ~\\
+Caratteristiche tensione-corrente della sonda di Langmuir:
+\begin{center}
+\begin{tabular}{p{3cm}p{3cm}}
+\toprule
+File name	&$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$0603lang24$	&$  $\\
+$0603lang25$	&$  $\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Spettri raccolti:
+\begin{center}
+\begin{tabular}{p{3cm}p{4cm}p{2cm}p{3cm}}
+\toprule
+File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_n$ [$\si{\milli\bar}$]\\
+\midrule
+$0603specnad50$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad51$	&$300-600$	&$0.2$		&$  $\\
+$0603specnad52$	&$600-800$	&$0.05$		&$  $\\
+$0603specnad53$	&$600-800$	&$0.05$		&$  $\\
+
 \bottomrule
 \end{tabular}
 \end{center}
