@@ -46,30 +46,30 @@ Mode=LaTeX
 
 [item:Esperimento_06032017.tex]
 archive=true
-column=57
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=220
+line=27
 mode=LaTeX
 open=true
 order=3
 
 [item:Esperimento_23022017.tex]
 archive=true
-column=58
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=144
+line=2
 mode=LaTeX
 open=true
 order=1
 
 [item:Esperimento_27022017.tex]
 archive=true
-column=22
+column=40
 encoding=UTF-8
 highlight=LaTeX
-line=337
+line=98
 mode=LaTeX
 open=true
 order=2
@@ -95,22 +95,22 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Esperimento_06032017.tex]
-CursorColumn=57
-CursorLine=220
+CursorColumn=0
+CursorLine=27
 JumpList=
-ViMarks=.,220,56,[,220,56,],220,56
+ViMarks=.,335,1,[,335,1,],335,10
 
 [view-settings,view=0,item:Esperimento_23022017.tex]
-CursorColumn=58
-CursorLine=144
+CursorColumn=0
+CursorLine=2
 JumpList=
 ViMarks=.,144,58,[,144,58,],144,58
 
 [view-settings,view=0,item:Esperimento_27022017.tex]
-CursorColumn=22
-CursorLine=337
+CursorColumn=40
+CursorLine=98
 JumpList=
-ViMarks=.,337,21,[,337,21,],337,21
+ViMarks=.,98,39,[,98,36,],98,39
 
 [view-settings,view=0,item:Relazioni_CNR.tex]
 CursorColumn=0

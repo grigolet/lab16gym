@@ -10,15 +10,36 @@ Per descrizione dettagliata degli strumenti vedi capitolo precedente, \textit{Se
 Le condizioni sperimentali utilizzate sono le seguenti:
 \begin{itemize}
  \item corrente delle bobine di GyM fissa a $600\si{\ampere}$;
+ \item diverse potenze per le microonde, $20\%$, $30\%$, $40\%$, $50\%$, $60\%$ e $90\%$;
+ \item due differenti condizioni di miscela
  
- VANNO FATTI I CALCOLI DELLE PERCENTUALI E POI CORRETTE tutte LE PRESSIONI CON I FATTORI CORETTIVI rispettivi
- 
- \item due differenti condizioni di miscela\\
- $\text{Ar}=  $,  $\text{Ar}+\text{N}_2=  $, $\text{Ar}+\text{N}_2+\text{De}=  $\\
- $\text{Ar}=  $,  $\text{Ar}+\text{N}_2=  $, $\text{Ar}+\text{N}_2+\text{De}=  $\\
- le pressioni riportate sono quelle a plasma spento;
- 
- \item diverse potenze per le microonde, $20\%$, $30\%$, $40\%$, $50\%$, $60\%$ e $90\%$.
+
+    \begin{center}
+    \paragraph{P$_\text{off,TOT}=2.55\cdot10^{-4}\si{\milli\bar}$} 
+    \begin{tabular}{p{3cm}p{3cm}p{3cm}p{3cm}}
+    \toprule
+    Gas		&$P_{off}$ [$\si{\milli\bar}$] &$\%$ sul totale &$\%$ sul Deuterio\\
+    \midrule
+    Ar		&$2.16\cdot10^{-5}$	&8.5$\%$	&11$\%$\\
+    N$_2$	&$3.87\cdot10^{-5}$	&15.2$\%$	&20$\%$\\
+    De		&$1.95\cdot10^{-4}$	&76.5$\%$	&\\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    
+    \begin{center}
+    \paragraph{P$_\text{off,TOT}=2.43\cdot10^{-4}\si{\milli\bar}$}
+    \begin{tabular}{p{3cm}p{3cm}p{3cm}p{3cm}}
+    \toprule
+    Gas		&$P_{off}$ [$\si{\milli\bar}$] &$\%$ sul totale &$\%$ sul Deuterio\\
+    \midrule
+    Ar		&$7.36\cdot10^{-5}$	&30.3$\%$	&56.2$\%$\\
+    N$_2$	&$3.80\cdot10^{-5}$	&15.6$\%$	&29$\%$\\
+    De		&$1.31\cdot10^{-4}$	&54$\%$		&\\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
 \end{itemize}
 
 
@@ -26,7 +47,8 @@ Le condizioni sperimentali utilizzate sono le seguenti:
 La sonda di Langmuir si trova a $2\si{\centi\meter}$ dal centro macchina.
 In questo esperimento le variazioni di potenza delle microonde non sono state effettuate riportando di volta in volta il gas alla condizione di "non-plasma" ma aspettando semplicemente lo stabilizzarsi 
 della pressione una volta impostata la potenza desiderata.\\
-Lo studio spettrocopico verrà effettutato sul Argon e Deuterio anche perchè l'Azotosi dissolve difficilmente e si possono vedere al massimo delle piccolo linee atomiche.
+Lo studio spettroscopico verrà effettutato sul Argon e Deuterio anche perchè l'Azoto si dissolve difficilmente e si possono vedere al massimo delle piccolo linee atomiche. 
+L'analisi dei dati raccolti con la sonda di Langmuir verrà effettuata considerando il plasma come composto interamente di Deuterio.
 
 \subsection{Analisi dati: profilo di densità a diverse pressioni e potenze}
 
@@ -46,7 +68,7 @@ BLA BLA
 \section{File dati}
 MANCANO TUTTE LE PRESSIONI
 
-\subsection{File utilizzati per pressione totale di $   $}
+\subsection{File utilizzati per pressione totale di $2.55\cdot10^{-4}\si{\milli\bar}$}
 
 \paragraph*{Potenza microonde $\text{20\%}$} ~\\
 Caratteristiche tensione-corrente della sonda di Langmuir:
@@ -69,10 +91,8 @@ Spettri raccolti:
 File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\footnote{$\text{AT}=\text{acquisition time}$} &$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
 $0603specnad11$	&$300-600$	&$0.2$		&$  $\\
-$0603specde5$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad12$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad13$	&$600-800$	&$0.05$		&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -86,7 +106,6 @@ File name	&$P_{n}$ [$\si{\milli\bar}$]\\
   \midrule
 $0603lang04$	&$  $\\
 $0603lang05$	&$  $\\
-
   \bottomrule
   \end{tabular}
 \end{center}
@@ -101,8 +120,6 @@ $0603specnad14$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad15$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad16$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad17$	&$600-800$	&$0.05$		&$  $\\
-
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -130,7 +147,6 @@ $0603specnad18$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad19$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad20$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad21$	&$600-800$	&$0.05$		&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -158,7 +174,6 @@ $0603specnad22$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad23$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad24$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad25$	&$600-800$	&$0.05$		&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -186,7 +201,6 @@ $0603specnad26$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad27$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad28$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad29$	&$600-800$	&$0.05$		&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -212,13 +226,11 @@ File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] 	&AT [s]\foo
 \midrule
 $0603specnad30$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad31$	&$600-800$	&$0.05$		&$  $\\
-
-
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection{File utilizzati per pressione totale di $  $}
+\subsection{File utilizzati per pressione totale di $2.43\cdot10^{-4}\si{\milli\bar}$}
 
 \paragraph*{Potenza microonde $\text{20\%}$}~\\
 Caratteristiche tensione-corrente della sonda di Langmuir:
@@ -228,7 +240,6 @@ Caratteristiche tensione-corrente della sonda di Langmuir:
 File name	&$P_{n}$ [$\si{\milli\bar}$]\\
 \midrule
 $0603lang14$	&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -241,8 +252,6 @@ File name	&$\lambda_\text{range}\text{/}\lambda_\text{centre}$ [nm] &AT [s]\foot
 \midrule
 $0603specnad32$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad33$	&$300-600$	&$0.2$		&$  $\\
-
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -256,7 +265,6 @@ File name	&$P_{n}$ [$\si{\milli\bar}$]\\
   \midrule
 $0603lang16$	&$  $\\
 $0603lang17$	&$  $\\
-
   \bottomrule
   \end{tabular}
 \end{center}
@@ -271,8 +279,6 @@ $0603specnad34$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad35$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad36$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad37$	&$600-800$	&$0.05$		&$  $\\
-
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -300,7 +306,6 @@ $0603specnad38$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad39$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad40$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad41$	&$600-800$	&$0.05$		&$  $\\
-
 \bottomrule
 \end{tabular}
 \end{center}
@@ -328,7 +333,7 @@ $0603specnad42$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad43$	&$300-600$	&$0.2$		&$  $\\
 $0603specnad44$	&$600-800$	&$0.05$		&$  $\\
 $0603specnad45$	&$600-800$	&$0.05$		&$  $\\
-
+\bottomrule
 \end{tabular}
 \end{center}
 
